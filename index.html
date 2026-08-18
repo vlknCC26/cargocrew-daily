@@ -172,6 +172,9 @@
 
   .install-hint{display:none; font-family:var(--sans); font-size:11.5px; color:var(--ink-2); background:var(--card); border:1px dashed var(--gold); border-radius:12px; padding:10px 14px; margin:0 0 18px; text-align:center;}
 
+  html, body{overflow-x:hidden; max-width:100vw;}
+  table{max-width:100%;}
+
   @media (max-width:880px){
     .lead-zone,.cols3,.cols2{display:block;}
     .col{border-right:none; padding:0;}
@@ -182,6 +185,37 @@
     .band{padding:18px;}
     .top-date{display:none;}
     .install-hint{display:block;}
+  }
+
+  @media (max-width:700px){
+    body{font-size:15px;}
+    .sheet{padding:0 12px 60px;}
+    .topbar-in{padding:8px 12px; gap:8px;}
+    .brand-mini{font-size:14px; overflow:hidden; text-overflow:ellipsis;}
+    .live-pill{padding:5px 10px; font-size:9px;}
+    .archive-btn{padding:7px 12px; font-size:11px;}
+    .masthead{padding:22px 0 12px;}
+    .ticker{grid-template-columns:1fr 1fr; gap:8px;}
+    .tick .v{font-size:16px;}
+    .lead h2{font-size:24px;}
+    .story h2{font-size:17px;}
+    .wire-item{flex-wrap:wrap; row-gap:2px;}
+    .wire-item a{flex:1 1 100%; order:2;}
+    .wire-item .wt{margin-left:auto;}
+    .numrow{flex-wrap:wrap;}
+    /* Radar & data tables become stacked cards on phones */
+    .radar-table, .radar-table tbody, .radar-table tr, .radar-table td{display:block; width:100%;}
+    .radar-table th{display:none;}
+    .radar-table tr{border:1px solid var(--rule); border-radius:12px; padding:12px 14px; margin-bottom:10px; background:var(--paper);}
+    .radar-table td{border:none; padding:2px 0;}
+    .radar-table td.car{font-size:16.5px; white-space:normal; padding-bottom:4px;}
+    .radar-table td.stars{padding-top:4px; font-size:14px;}
+    .radar-table td:nth-child(3):before{content:'Markets open: '; font-weight:800; font-size:10px; letter-spacing:.8px; text-transform:uppercase; color:var(--ink-3);}
+    /* Generic edition tables (older editions): allow horizontal scroll instead of page overflow */
+    .edition table:not(.radar-table){display:block; overflow-x:auto; white-space:nowrap;}
+    .topline{font-size:9.5px;}
+    .actions{columns:1;}
+    .archive-panel{top:52px; right:12px;}
   }
 </style>
 </head>
