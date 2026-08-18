@@ -175,8 +175,9 @@
   var container = document.getElementById('editions');
   var current = null;
   function loadEdition(id, btn){
-    fetch('ed-'+id+'.html?t='+Date.now()).then(function(r){return r.text();}).then(function(h){
+    fetch('ed-'+id+'.html?t='+Date.now()).then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.text();}).then(function(h){
       container.innerHTML = h;
+      var sec = container.querySelector('.edition'); if(sec) sec.classList.add('show');
       Array.prototype.forEach.call(nav.children, function(b){ b.classList.toggle('active', b===btn); });
       current = id;
       window.scrollTo(0,0);
@@ -272,6 +273,7 @@
     log('Auto-refresh started ('+trigger+')');
     // Preferred source: headlines.json rebuilt hourly by GitHub Actions on the same site (no CORS, always fresh)
     fetch('headlines.json?t='+Date.now()).then(function(r){ if(!r.ok) throw new Error('no baked headlines'); return r.json(); }).then(function(j){
+      if(!j.items || !j.items.length) throw new Error('headlines not built yet');
       var items = (j.items||[]).map(function(it){ return {title:it.title, link:it.link, date:it.date?new Date(it.date):null, src:it.src}; });
       render(items);
       status.textContent = 'Headlines updated hourly on this site — last build '+(j.generated||'')+' UTC. Analysed editions below are updated each morning. Today: '+new Date().toDateString()+'.';
