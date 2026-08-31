@@ -412,7 +412,7 @@
     tabsIn.innerHTML = '';
     sections.forEach(function(s){
       var t = document.createElement('button'); t.className = 'tab'; t.textContent = s.label;
-      t.addEventListener('click', function(){ document.getElementById(s.id).scrollIntoView({behavior:'smooth', block:'start'}); });
+      t.addEventListener('click', function(){ sections.forEach(function(x){ x.btn.classList.toggle('active', x===s); }); spyIdx = sections.indexOf(s); document.getElementById(s.id).scrollIntoView({behavior:'smooth', block:'start'}); });
       s.btn = t; tabsIn.appendChild(t);
     });
   }
