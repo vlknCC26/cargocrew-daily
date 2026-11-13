@@ -335,7 +335,7 @@
 
   <div class="masthead" id="top">
     <h1>THE <span class="cc">CARGOCREW</span> DAILY</h1>
-    <div class="motto">"Opportunities before competitors do." Every story links to its source; tap any headline.</div>
+    <div class="motto">Independent daily intelligence for the air cargo industry. Every story links to its source; tap any headline.</div>
     <div class="rule"></div>
     <div class="install-hint">📱 Make this an app: Safari → Share → <b>Add to Home Screen</b> (iPhone) · Chrome menu → <b>Install app</b> (Android)</div>
   </div>
@@ -486,7 +486,7 @@
       var left = '<div class="b-left"><div class="kicker">Today in 30 seconds</div><h2>'+(href?'<a href="'+href+'" target="_blank" rel="noopener">':'')+(h?h.innerHTML:'')+(href?'</a>':'')+'</h2>'+(why?'<div class="b-why">'+cap(why.innerHTML.replace(/<b>Why it matters:<\/b>\s*/i,''))+'</div>':'')+'<span class="b-more" data-go="sec-lead">Read the full story ↓</span></div>';
       var items = '';
       Array.prototype.slice.call(acts, 0, 3).forEach(function(a){ var c = a.cloneNode(true); var n = c.querySelector('.n'); if(n) n.parentNode.removeChild(n); items += '<li><span>'+c.innerHTML+'</span></li>'; });
-      var right = '<div class="b-right"><div class="kicker">Do first</div><ol>'+items+'</ol>'+(acts.length>3?'<span class="b-more" data-go="sec-actions">All '+acts.length+' actions ↓</span>':'')+'</div>';
+      var right = !acts.length ? '' : '<div class="b-right"><div class="kicker">Do first</div><ol>'+items+'</ol>'+(acts.length>3?'<span class="b-more" data-go="sec-actions">All '+acts.length+' actions ↓</span>':'')+'</div>';
       b.innerHTML = left + right;
       sec.insertBefore(b, sec.querySelector('.boards') || anchor);
     }
@@ -502,7 +502,7 @@
       else if(/markets/i.test(title)) tag(bd, 'sec-markets', 'Markets');
       else if(/economy/i.test(title)) tag(bd, 'sec-economy', 'Economy');
       else if(/brief/i.test(title)) tag(bd, 'sec-brief-list', 'In Brief');
-      else if(bd.querySelector('.risk-num') || /opportunity/i.test(title)) tag(bd, 'sec-opps', 'Opportunities');
+      else if(bd.querySelector('.risk-num') || /opportunity/i.test(title)) tag(bd, 'sec-opps', 'Outlook');
       else if(bd.querySelector('.actions') || /desk/i.test(title)) tag(bd, 'sec-actions', 'Actions');
       else if(!bd.id && bd.querySelector('.story')) tag(bd, 'sec-stories', 'Also Today');
     });
